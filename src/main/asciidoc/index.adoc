@@ -1,0 +1,472 @@
+= Industry 4.0 - Model Management Platform
+EnPro IPVS Universität Stuttgart
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectanchors:
+
+= Introduction
+MMP (Model Management Platform) is a RESTful service for managing and storing models.
+
+= Overview
+
+== HTTP verbs
+MMP tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP verbs.
+|===
+| Verb | Usage
+| `GET`
+| Used to retrieve a resource
+| `POST`
+| Used to create a new resource
+| `PUT`
+| Used to update an existing resource, full updates only
+| `DELETE`
+| Used to delete an existing resource
+|===
+[[overview-http-status-codes]]
+== HTTP status codes
+MMP tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP status codes.
+|===
+| Status code | Usage
+| `200 OK`
+| Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request, the response will contain an entity describing or containing the result of the action.
+| `201 Created`
+| The request has been fulfilled and has resulted in a new resource being created.
+| `204 No Content`
+| The server has successfully processed the request but does not return any content.
+| `400 Bad Request`
+| The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+| `404 Not Found`
+| The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible.
+|===
+[[resources]]
+= Resources
+
+== User
+
+=== Get User
+A `GET` request to retrieve a user. The parameter `id` is required.
+
+==== Example request
+include::{projectDir}/common/{snippets}/user-get/http-request.adoc[]
+==== Example response
+include::{projectDir}/common/{snippets}/user-get/http-response.adoc[]
+
+=== Create User
+A `POST` request to create a user.
+
+==== Example request
+include::{projectDir}/common/{snippets}/user-create/http-request.adoc[]
+==== Example response
+include::{projectDir}/common/{snippets}/user-create/http-response.adoc[]
+
+=== Update User
+A `PUT` request to update an existing user. The parameter `id` is required.
+
+==== Example request
+include::{projectDir}/common/{snippets}/user-update/http-request.adoc[]
+==== Example response
+include::{projectDir}/common/{snippets}/user-update/http-response.adoc[]
+
+=== Delete User
+A `DELETE` request to delete an existing user. The parameter `id` is required.
+
+==== Example request
+include::{projectDir}/common/{snippets}/user-delete/http-request.adoc[]
+==== Example response
+include::{projectDir}/common/{snippets}/user-delete/http-response.adoc[]
+
+== Project
+
+=== Get All Projects
+A `GET` request to get all projects.
+
+==== Example request
+include::{projectDir}/common/{snippets}/project-get-all/http-request.adoc[]
+==== Example response
+include::{projectDir}/common/{snippets}/project-get-all/http-response.adoc[]
+
+=== Get Project
+A `GET` request to get project by id. The parameter `id` is required.
+
+==== Example request
+include::{projectDir}/common/{snippets}/project-get/http-request.adoc[]
+==== Example response
+include::{projectDir}/common/{snippets}/project-get/http-response.adoc[]
+
+=== Create Project
+A `POST` request to create a project.
+
+==== Example request
+include::{projectDir}/common/{snippets}/project-create/http-request.adoc[]
+==== Example response
+include::{projectDir}/common/{snippets}/project-create/http-response.adoc[]
+
+=== Update Project
+A `POST` request to update an existing project. The parameter `id` is required.
+
+==== Example request
+include::{projectDir}/common/{snippets}/project-update/http-request.adoc[]
+==== Example response
+include::{projectDir}/common/{snippets}/project-update/http-response.adoc[]
+
+=== Delete Project
+A `DELETE` request to delete an existing project. The parameter `id` is required.
+
+==== Example request
+include::{projectDir}/common/{snippets}/project-delete/http-request.adoc[]
+==== Example response
+include::{projectDir}/common/{snippets}/project-delete/http-response.adoc[]
+
+== Model
+
+=== Get Model By Id
+A `GET` request to get specific model by id. The parameters `projectId` and `id` are required.
+
+==== Example request
+include::{projectDir}/model/{snippets}/model-get/http-request.adoc[]
+==== Example response
+include::{projectDir}/model/{snippets}/model-get/http-response.adoc[]
+
+=== Get All Models
+A `GET` request to get all models by project id. The parameter `id` is required.
+
+==== Example request
+include::{projectDir}/model/{snippets}/model-get-all/http-request.adoc[]
+==== Example response
+include::{projectDir}/model/{snippets}/model-get-all/http-response.adoc[]
+
+=== Delete Model
+A `DELETE` request to deletes an existing model. The parameters `projectId` and `id` are required.
+
+==== Example request
+include::{projectDir}/model/{snippets}/model-delete/http-request.adoc[]
+==== Example response
+include::{projectDir}/model/{snippets}/model-delete/http-response.adoc[]
+
+=== Update Model
+A `PUT` request to update an existing model. The parameters `projectId` and `id` are required.
+
+==== Example request
+include::{projectDir}/model/{snippets}/model-update/http-request.adoc[]
+==== Example response
+include::{projectDir}/model/{snippets}/model-update/http-response.adoc[]
+
+=== Create Model
+A `POST` request to create a model. The parameter `projectId` is required.
+
+[IMPORTANT]
+====
+    opcuaInformationModels and modelFile will be ignored. Please parse this files and than add them via specfic API.
+====
+
+==== Example request
+include::{projectDir}/model/{snippets}/model-create/http-request.adoc[]
+==== Example response
+include::{projectDir}/model/{snippets}/model-create/http-response.adoc[]
+
+== Model File
+
+=== Get Model File
+A `GET` request to get model file. The parameters `projectId` and `id` are required.
+
+==== Example request
+include::{projectDir}/model/{snippets}/model-file-get/http-request.adoc[]
+==== Example response
+include::{projectDir}/model/{snippets}/model-file-get/http-response.adoc[]
+
+=== Get Model File Raw
+A `GET` request to get raw model file. The parameters `projectId` and `id` are required.
+
+==== Example request
+include::{projectDir}/model/{snippets}/model-file-get-raw/http-request.adoc[]
+==== Example response
+include::{projectDir}/model/{snippets}/model-file-get-raw/http-response.adoc[]
+
+=== Create Model File
+A `POST` request to create model file. The parameter `projectId` is required.
+
+==== Example request
+include::{projectDir}/model/{snippets}/model-file-create/http-request.adoc[]
+==== Example response
+include::{projectDir}/model/{snippets}/model-file-create/http-response.adoc[]
+
+=== Delete Model File
+A `DELETE` request to delete model file. The parameters `projectId` and `id` are required.
+
+==== Example request
+include::{projectDir}/model/{snippets}/model-file-delete/http-request.adoc[]
+==== Example response
+include::{projectDir}/model/{snippets}/model-file-delete/http-response.adoc[]
+
+=== Parse Model File
+A `POST` request to parse file. The parameter `projectId` is required.
+
+==== Example request
+include::{projectDir}/model/{snippets}/model-file-parse/http-request.adoc[]
+==== Example response
+include::{projectDir}/model/{snippets}/model-file-parse/http-response.adoc[]
+
+==== Parse R File
+A `POST` request to parse R file. The parameter `projectId` is required.
+
+===== Example request
+include::{projectDir}/model/{snippets}/model-file-parse-r/http-request.adoc[]
+===== Example response
+include::{projectDir}/model/{snippets}/model-file-parse-r/http-response.adoc[]
+
+==== Parse Pickle File
+A `POST` request to parse Pickle file. The parameter `projectId` is required.
+
+===== Example request
+include::{projectDir}/model/{snippets}/model-file-parse-pickle/http-request.adoc[]
+===== Example response
+include::{projectDir}/model/{snippets}/model-file-parse-pickle/http-response.adoc[]
+
+== OPC UA Information Model
+
+=== Get All OPC UAs
+A `GET` request to get all OPC UAs. The parameter `projectId` is required.
+
+==== Example request
+include::{projectDir}/model/{snippets}/opcua-get-all/http-request.adoc[]
+==== Example response
+include::{projectDir}/model/{snippets}/opcua-get-all/http-response.adoc[]
+
+=== Get OPC UA
+A `GET` request to get an existing OPC UA. The parameters `projectId` and `id` are required.
+
+==== Example request
+include::{projectDir}/model/{snippets}/opcua-get/http-request.adoc[]
+==== Example response
+include::{projectDir}/model/{snippets}/opcua-get/http-response.adoc[]
+
+=== Get OPC UA RAW
+A `GET` request to get an existing raw OPC UA. The parameters `projectId` and `id` are required.
+
+==== Example request
+include::{projectDir}/model/{snippets}/opcua-get-raw/http-request.adoc[]
+==== Example response
+include::{projectDir}/model/{snippets}/opcua-get-raw/http-response.adoc[]
+
+=== Create OPC UA
+A `POST` request to create a OPC UA. The parameter `projectId` is required.
+
+==== Example request
+include::{projectDir}/model/{snippets}/opcua-create/http-request.adoc[]
+==== Example response
+include::{projectDir}/model/{snippets}/opcua-create/http-response.adoc[]
+
+=== Delete OPC UA
+A `DELETE` request to delete an existing OPC UA. The parameters `projectId` and `id` are required.
+
+==== Example request
+include::{projectDir}/model/{snippets}/opcua-delete/http-request.adoc[]
+==== Example response
+include::{projectDir}/model/{snippets}/opcua-delete/http-response.adoc[]
+
+=== Parse OPC UA
+A `POST` request to parse a file to OPC UA. The parameter `projectId` is required.
+
+==== Example request
+include::{projectDir}/model/{snippets}/opcua-parse/http-request.adoc[]
+==== Example response
+include::{projectDir}/model/{snippets}/opcua-parse/http-response.adoc[]
+
+== Model Group
+
+=== Get All Models By Model Group
+A `GET` request to get all models by model group id. The parameters `projectId` and `modelGroupId` are required.
+
+==== Example request
+include::{projectDir}/model/{snippets}/model-group-get/http-request.adoc[]
+==== Example response
+include::{projectDir}/model/{snippets}/model-group-get/http-response.adoc[]
+
+=== Get Latest Model By Model Group
+A `GET` request to get the latest model by model group. The parameters `projectId` and `modelGroupId` are required.
+
+==== Example request
+include::{projectDir}/model/{snippets}/model-group-get-latest/http-request.adoc[]
+==== Example response
+include::{projectDir}/model/{snippets}/model-group-get-latest/http-response.adoc[]
+
+=== Get All Model Groups By Project Id
+A `GET` request to get all model groups by project id. The parameter `projectId` is required.
+
+==== Example request
+include::{projectDir}/model/{snippets}/model-group-get-all/http-request.adoc[]
+==== Example response
+include::{projectDir}/model/{snippets}/model-group-get-all/http-response.adoc[]
+
+== Business Process
+
+=== Get All Business Processes
+A `GET` request to get all business processes.
+
+==== Example request
+include::{projectDir}/eam/{snippets}/business-process-get-all/http-request.adoc[]
+==== Example response
+include::{projectDir}/eam/{snippets}/business-process-get-all/http-response.adoc[]
+
+=== Get Business Process
+A `GET` request to get business process. The parameter `id` is required.
+
+==== Example request
+include::{projectDir}/eam/{snippets}/business-process-get/http-request.adoc[]
+==== Example response
+include::{projectDir}/eam/{snippets}/business-process-get/http-response.adoc[]
+
+=== Create Business Process
+A `POST` request to create a business process.
+
+==== Example request
+include::{projectDir}/eam/{snippets}/business-process-create/http-request.adoc[]
+==== Example response
+include::{projectDir}/eam/{snippets}/business-process-create/http-response.adoc[]
+
+=== Update Business Process
+A `PUT` request to update an existing business process. The parameter `id` is required.
+
+==== Example request
+include::{projectDir}/eam/{snippets}/business-process-update/http-request.adoc[]
+==== Example response
+include::{projectDir}/eam/{snippets}/business-process-update/http-response.adoc[]
+
+=== Delete Business Process
+A `DELETE` request to delete an existing business process.
+
+==== Example request
+include::{projectDir}/eam/{snippets}/business-process-delete/http-request.adoc[]
+==== Example response
+include::{projectDir}/eam/{snippets}/business-process-delete/http-response.adoc[]
+
+== EAM Container
+
+=== Get all EAM Containers
+A `GET` request to get all EAM Containers.
+
+==== Example request
+include::{projectDir}/eam/{snippets}/eam-container-get-all/http-request.adoc[]
+==== Example response
+include::{projectDir}/eam/{snippets}/eam-container-get-all/http-response.adoc[]
+
+=== Get EAM Containers By Model
+A `GET` request to get EAM Containers by model. The parameter `modelId` is required.
+
+==== Example request
+include::{projectDir}/eam/{snippets}/eam-container-get-by-model/http-request.adoc[]
+==== Example response
+include::{projectDir}/eam/{snippets}/eam-container-get-by-model/http-response.adoc[]
+
+=== Create EAM Container
+A `POST` request to create a EAM Container.
+
+==== Example request
+include::{projectDir}/eam/{snippets}/eam-container-create/http-request.adoc[]
+==== Example response
+include::{projectDir}/eam/{snippets}/eam-container-create/http-response.adoc[]
+
+=== Update EAM Container
+A `PUT` request to update an existing EAM Container. The parameter `id` is required.
+
+==== Example request
+include::{projectDir}/eam/{snippets}/eam-container-update/http-request.adoc[]
+==== Example response
+include::{projectDir}/eam/{snippets}/eam-container-update/http-response.adoc[]
+
+=== Delete All EAM Containers
+A `DELETE` request to delete all EAM Containers.
+
+==== Example request
+include::{projectDir}/eam/{snippets}/eam-container-delete-all/http-request.adoc[]
+==== Example response
+include::{projectDir}/eam/{snippets}/eam-container-delete-all/http-response.adoc[]
+
+== Organisation Unit
+
+=== Get all Org Units
+A `GET` request to get all Org Units.
+
+==== Example request
+include::{projectDir}/eam/{snippets}/org-unit-get-all/http-request.adoc[]
+==== Example response
+include::{projectDir}/eam/{snippets}/org-unit-get-all/http-response.adoc[]
+
+=== Get Org Unit
+A `GET` request to get a Org Unit. The parameter `id` is required.
+
+==== Example request
+include::{projectDir}/eam/{snippets}/org-unit-get/http-request.adoc[]
+==== Example response
+include::{projectDir}/eam/{snippets}/org-unit-get/http-response.adoc[]
+
+=== Create Org Unit
+A `POST` request to create a Org Unit.
+
+==== Example request
+include::{projectDir}/eam/{snippets}/org-unit-create/http-request.adoc[]
+==== Example response
+include::{projectDir}/eam/{snippets}/org-unit-create/http-response.adoc[]
+
+=== Update Org Unit
+A `PUT` request to update an existing Org Unit. The parameter `id` is required.
+
+==== Example request
+include::{projectDir}/eam/{snippets}/org-unit-update/http-request.adoc[]
+==== Example response
+include::{projectDir}/eam/{snippets}/org-unit-update/http-response.adoc[]
+
+=== Delete Org Unit
+A `DELETE` request to delete an existing Org Unit. The parameter `id` is required.
+
+==== Example request
+include::{projectDir}/eam/{snippets}/org-unit-delete/http-request.adoc[]
+==== Example response
+include::{projectDir}/eam/{snippets}/org-unit-delete/http-response.adoc[]
+
+== Searching
+
+=== Search
+A `POST` request to search through all models.
+
+==== Example request
+include::{projectDir}/search/{snippets}/search/http-request.adoc[]
+==== Example response
+include::{projectDir}/search/{snippets}/search/http-response.adoc[]
+
+=== Get Filter for Search
+A `GET` request to get the filters for the search request.
+
+==== Example request
+include::{projectDir}/search/{snippets}/filter/http-request.adoc[]
+==== Example response
+include::{projectDir}/search/{snippets}/filter/http-response.adoc[]
+
+== Scoring
+
+=== Score
+A `GET` request to score a specific model. The parameters `projectId` and `modelId` are required..
+
+==== Example request
+include::{projectDir}/scoring/{snippets}/score/http-request.adoc[]
+==== Example response
+include::{projectDir}/scoring/{snippets}/score/http-response.adoc[]
+
+= Credits
+The following contributors have been involved in this project:
+
+* Christian Schierle
+* Dennis Tschechlov
+* Florian Strohm
+* Julian Strotzer
+* Ken Singer
+* Leslie Tso
+* Marco Link
+* Martin Beisel
+* Matthias Popp
+* Tobias Boceck

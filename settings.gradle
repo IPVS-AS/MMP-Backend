@@ -1,0 +1,8 @@
+rootProject.name = 'mmp-backend'
+
+include 'common'
+include 'model'
+include 'recommendation'
+include 'search'
+include 'scoring'
+include 'eam'

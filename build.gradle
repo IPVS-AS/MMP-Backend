@@ -1,0 +1,113 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+		jcenter()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.8'
+	}
+}
+
+plugins {
+	id "org.sonarqube" version "2.6.2"
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'idea'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: "jacoco"
+apply plugin: 'org.asciidoctor.convert'
+
+group = 'de.unistuttgart.ipvs.as.mmp'
+
+subprojects {
+	apply plugin: 'java'
+	apply plugin: 'idea'
+	apply plugin: 'io.spring.dependency-management'
+	apply plugin: "jacoco"
+	apply plugin: 'org.asciidoctor.convert'
+}
+
+allprojects {
+
+	sourceCompatibility = 1.8
+
+	repositories {
+		mavenCentral()
+	}
+
+	dependencyManagement {
+		imports { mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}") }
+	}
+
+	dependencies {
+		compile('org.springframework.boot:spring-boot-starter-data-jpa')
+		compile('org.springframework.boot:spring-boot-starter-actuator')
+        compile('org.springframework.boot:spring-boot-starter-web')
+		compile("org.springframework.boot:spring-boot-devtools")
+		compile('org.projectlombok:lombok:1.18.0')
+		compile('org.postgresql:postgresql')
+		compile('io.springfox:springfox-swagger2:2.9.2')
+		compile('io.springfox:springfox-swagger-ui:2.9.2')
+		compile('org.hibernate:hibernate-search-orm:5.9.3.Final'){
+			exclude group:'org.slf4j'
+
+		}
+		testCompile('org.springframework.boot:spring-boot-starter-test')
+		testCompile("org.springframework.restdocs:spring-restdocs-mockmvc")
+		testCompile('com.h2database:h2')
+		testRuntimeOnly(
+				'org.junit.jupiter:junit-jupiter-engine:5.1.0',
+				'org.junit.vintage:junit-vintage-engine:5.1.0'
+		)
+		testImplementation(
+				'org.junit.jupiter:junit-jupiter-api:5.1.0'
+		)
+	}
+
+	ext {
+		snippetsDir = file("${buildDir}/generated-snippets")
+	}
+
+	test {
+	    useJUnitPlatform()
+		finalizedBy jacocoTestReport
+		outputs.dir snippetsDir
+	}
+
+	jacocoTestReport {
+		reports {
+			xml.enabled false
+			csv.enabled false
+			html.destination file("${buildDir}/jacocoHtml")
+		}
+	}
+}
+
+dependencies {
+	compile project(":model"), project(":common"), project(":scoring"), project(":eam"), project(":search")
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '4.8.1'
+}
+
+asciidoctor {
+	sourceDir = file("src/main/asciidoc")
+	outputDir = snippetsDir
+	attributes 'snippets': 'build/generated-snippets'
+	subprojects.each { dependsOn("${it.name}:test") }
+}
+
+bootJar {
+	classifier = "boot"
+	dependsOn asciidoctor
+	from ("${asciidoctor.outputDir}/html5") {
+		into 'static/v1/docs'
+	}
+}

@@ -1,0 +1,561 @@
+<?xml version='1.0' encoding='utf-8'?>
+<UANodeSet xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <NamespaceUris>
+    <Uri>adminishell</Uri>
+  </NamespaceUris>
+  <Aliases>
+    <Alias Alias="UInt16">i=5</Alias>
+    <Alias Alias="UInt32">i=7</Alias>
+    <Alias Alias="Float">i=10</Alias>
+    <Alias Alias="Double">i=11</Alias>
+    <Alias Alias="String">i=12</Alias>
+    <Alias Alias="Organizes">i=35</Alias>
+    <Alias Alias="HasTypeDefinition">i=40</Alias>
+    <Alias Alias="HasSubtype">i=45</Alias>
+    <Alias Alias="HasProperty">i=46</Alias>
+    <Alias Alias="HasComponent">i=47</Alias>
+  </Aliases>
+  <UAObjectType BrowseName="1:SensorObjectType" NodeId="ns=1;i=1">
+    <DisplayName>SensorObjectType</DisplayName>
+    <Description>SensorObjectType</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasSubtype">i=58</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=2</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=3</Reference>
+      <Reference ReferenceType="HasSubtype">ns=1;i=9</Reference>
+      <Reference ReferenceType="HasSubtype">ns=1;i=16</Reference>
+    </References>
+  </UAObjectType>
+  <UAObject BrowseName="1:Konfiguration" NodeId="ns=1;i=2" ParentNodeId="ns=1;i=1">
+    <DisplayName>Konfiguration</DisplayName>
+    <Description>Konfiguration</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=1</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+    </References>
+  </UAObject>
+  <UAObject BrowseName="1:Stammdaten" NodeId="ns=1;i=3" ParentNodeId="ns=1;i=1">
+    <DisplayName>Stammdaten</DisplayName>
+    <Description>Stammdaten</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=1</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=6</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=4</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=5</Reference>
+    </References>
+  </UAObject>
+  <UAObject BrowseName="1:Standort" NodeId="ns=1;i=6" ParentNodeId="ns=1;i=3">
+    <DisplayName>Standort</DisplayName>
+    <Description>Standort</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="Organizes">ns=1;i=3</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=7</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=8</Reference>
+    </References>
+  </UAObject>
+  <UAVariable BrowseName="1:Laengengrad" DataType="Double" NodeId="ns=1;i=7" ParentNodeId="ns=1;i=6">
+    <DisplayName>Laengengrad</DisplayName>
+    <Description>Laengengrad</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=6</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Double>0.0</uax:Double>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:Breitengrad" DataType="Double" NodeId="ns=1;i=8" ParentNodeId="ns=1;i=6">
+    <DisplayName>Breitengrad</DisplayName>
+    <Description>Breitengrad</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=6</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Double>0.0</uax:Double>
+    </Value>
+  </UAVariable>
+  <UAObjectType BrowseName="1:TemperaturSensorType" NodeId="ns=1;i=9">
+    <DisplayName>TemperaturSensorType</DisplayName>
+    <Description>TemperaturSensorType</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasSubtype">ns=1;i=1</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=10</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=13</Reference>
+    </References>
+  </UAObjectType>
+  <UAObject BrowseName="1:Konfiguration" NodeId="ns=1;i=10" ParentNodeId="ns=1;i=9">
+    <DisplayName>Konfiguration</DisplayName>
+    <Description>Konfiguration</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=9</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=11</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=12</Reference>
+    </References>
+  </UAObject>
+  <UAVariable BrowseName="1:SensorTyp" DataType="String" NodeId="ns=1;i=11" ParentNodeId="ns=1;i=10">
+    <DisplayName>SensorTyp</DisplayName>
+    <Description>SensorTyp</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasProperty">ns=1;i=10</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>Temperatur</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:IoPin" DataType="UInt16" NodeId="ns=1;i=12" ParentNodeId="ns=1;i=10">
+    <DisplayName>IoPin</DisplayName>
+    <Description>IoPin</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasProperty">ns=1;i=10</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+    <Value>
+      <uax:UInt16>0</uax:UInt16>
+    </Value>
+  </UAVariable>
+  <UAObject BrowseName="1:Temperatur" NodeId="ns=1;i=13" ParentNodeId="ns=1;i=9">
+    <DisplayName>Temperatur</DisplayName>
+    <Description>The base type for all object nodes.</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=9</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=14</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=15</Reference>
+    </References>
+  </UAObject>
+  <UAVariable BrowseName="1:Messwert" DataType="Float" NodeId="ns=1;i=14" ParentNodeId="ns=1;i=13">
+    <DisplayName>Messwert</DisplayName>
+    <Description>Messwert</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=13</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Float>0.0</uax:Float>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:Einheit" DataType="String" NodeId="ns=1;i=15" ParentNodeId="ns=1;i=13">
+    <DisplayName>Einheit</DisplayName>
+    <Description>Einheit</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasProperty">ns=1;i=13</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>Kelvin</uax:String>
+    </Value>
+  </UAVariable>
+  <UAObjectType BrowseName="1:LichtSensorType" NodeId="ns=1;i=16">
+    <DisplayName>LichtSensorType</DisplayName>
+    <Description>LichtSensorType</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasSubtype">ns=1;i=1</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=17</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=20</Reference>
+    </References>
+  </UAObjectType>
+  <UAObject BrowseName="1:Konfiguration" NodeId="ns=1;i=17" ParentNodeId="ns=1;i=16">
+    <DisplayName>Konfiguration</DisplayName>
+    <Description>Konfiguration</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=16</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=18</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=19</Reference>
+    </References>
+  </UAObject>
+  <UAVariable BrowseName="1:SensorTyp" DataType="String" NodeId="ns=1;i=18" ParentNodeId="ns=1;i=17">
+    <DisplayName>SensorTyp</DisplayName>
+    <Description>SensorTyp</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasProperty">ns=1;i=17</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>Licht</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:IoPin" DataType="UInt16" NodeId="ns=1;i=19" ParentNodeId="ns=1;i=17">
+    <DisplayName>IoPin</DisplayName>
+    <Description>IoPin</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasProperty">ns=1;i=17</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+    <Value>
+      <uax:UInt16>2</uax:UInt16>
+    </Value>
+  </UAVariable>
+  <UAObject BrowseName="1:Lichtstaerke" NodeId="ns=1;i=20" ParentNodeId="ns=1;i=16">
+    <DisplayName>Lichtstaerke</DisplayName>
+    <Description>The base type for all object nodes.</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=16</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=21</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=22</Reference>
+    </References>
+  </UAObject>
+  <UAVariable BrowseName="1:Messwert" DataType="UInt32" NodeId="ns=1;i=21" ParentNodeId="ns=1;i=20">
+    <DisplayName>Messwert</DisplayName>
+    <Description>Messwert</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=20</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:UInt32>0</uax:UInt32>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:Einheit" DataType="String" NodeId="ns=1;i=22" ParentNodeId="ns=1;i=20">
+    <DisplayName>Einheit</DisplayName>
+    <Description>Einheit</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasProperty">ns=1;i=20</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>lx</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:Hersteller" DataType="String" NodeId="ns=1;i=4" ParentNodeId="ns=1;i=3">
+    <DisplayName>Hersteller</DisplayName>
+    <Description>Hersteller</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasProperty">ns=1;i=3</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable BrowseName="1:Seriennummer" DataType="String" NodeId="ns=1;i=5" ParentNodeId="ns=1;i=3">
+    <DisplayName>Seriennummer</DisplayName>
+    <Description>Seriennummer</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasProperty">ns=1;i=3</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAObject BrowseName="1:LichtSensor" NodeId="ns=1;i=2001" ParentNodeId="i=85">
+    <DisplayName>LichtSensor</DisplayName>
+    <Description>LichtSensor</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="Organizes">i=85</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=16</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=2002</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=2005</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=2008</Reference>
+    </References>
+  </UAObject>
+  <UAObject BrowseName="1:Konfiguration" NodeId="ns=1;i=2002" ParentNodeId="ns=1;i=2001">
+    <DisplayName>Konfiguration</DisplayName>
+    <Description>Konfiguration</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=2001</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=2003</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=2004</Reference>
+    </References>
+  </UAObject>
+  <UAVariable BrowseName="1:SensorTyp" DataType="String" NodeId="ns=1;i=2003" ParentNodeId="ns=1;i=2002">
+    <DisplayName>SensorTyp</DisplayName>
+    <Description>SensorTyp</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasProperty">ns=1;i=2002</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>Licht</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:IoPin" DataType="UInt16" NodeId="ns=1;i=2004" ParentNodeId="ns=1;i=2002">
+    <DisplayName>IoPin</DisplayName>
+    <Description>IoPin</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasProperty">ns=1;i=2002</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+    <Value>
+      <uax:UInt16>2</uax:UInt16>
+    </Value>
+  </UAVariable>
+  <UAObject BrowseName="1:Lichtstaerke" NodeId="ns=1;i=2005" ParentNodeId="ns=1;i=2001">
+    <DisplayName>Lichtstaerke</DisplayName>
+    <Description>The base type for all object nodes.</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=2001</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=2006</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=2007</Reference>
+    </References>
+  </UAObject>
+  <UAVariable BrowseName="1:Messwert" DataType="UInt32" NodeId="ns=1;i=2006" ParentNodeId="ns=1;i=2005">
+    <DisplayName>Messwert</DisplayName>
+    <Description>Messwert</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=2005</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:UInt32>0</uax:UInt32>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:Einheit" DataType="String" NodeId="ns=1;i=2007" ParentNodeId="ns=1;i=2005">
+    <DisplayName>Einheit</DisplayName>
+    <Description>Einheit</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasProperty">ns=1;i=2005</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>lx</uax:String>
+    </Value>
+  </UAVariable>
+  <UAObject BrowseName="1:Stammdaten" NodeId="ns=1;i=2008" ParentNodeId="ns=1;i=2001">
+    <DisplayName>Stammdaten</DisplayName>
+    <Description>Stammdaten</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=2001</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=2009</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=2012</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=2013</Reference>
+    </References>
+  </UAObject>
+  <UAObject BrowseName="1:Standort" NodeId="ns=1;i=2009" ParentNodeId="ns=1;i=2008">
+    <DisplayName>Standort</DisplayName>
+    <Description>Standort</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="Organizes">ns=1;i=2008</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=2010</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=2011</Reference>
+    </References>
+  </UAObject>
+  <UAVariable BrowseName="1:Laengengrad" DataType="Double" NodeId="ns=1;i=2010" ParentNodeId="ns=1;i=2009">
+    <DisplayName>Laengengrad</DisplayName>
+    <Description>Laengengrad</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=2009</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Double>9.107</uax:Double>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:Breitengrad" DataType="Double" NodeId="ns=1;i=2011" ParentNodeId="ns=1;i=2009">
+    <DisplayName>Breitengrad</DisplayName>
+    <Description>Breitengrad</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=2009</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Double>48.74518</uax:Double>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:Hersteller" DataType="String" NodeId="ns=1;i=2012" ParentNodeId="ns=1;i=2008">
+    <DisplayName>Hersteller</DisplayName>
+    <Description>Hersteller</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasProperty">ns=1;i=2008</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>Manufacturer XYZ</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:Seriennummer" DataType="String" NodeId="ns=1;i=2013" ParentNodeId="ns=1;i=2008">
+    <DisplayName>Seriennummer</DisplayName>
+    <Description>Seriennummer</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasProperty">ns=1;i=2008</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>080312278</uax:String>
+    </Value>
+  </UAVariable>
+  <UAObject BrowseName="1:TemperaturSensor" NodeId="ns=1;i=2014" ParentNodeId="i=85">
+    <DisplayName>TemperaturSensor</DisplayName>
+    <Description>TemperaturSensor</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="Organizes">i=85</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=9</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=2015</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=2018</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=2021</Reference>
+    </References>
+  </UAObject>
+  <UAObject BrowseName="1:Konfiguration" NodeId="ns=1;i=2015" ParentNodeId="ns=1;i=2014">
+    <DisplayName>Konfiguration</DisplayName>
+    <Description>Konfiguration</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=2014</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=2016</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=2017</Reference>
+    </References>
+  </UAObject>
+  <UAVariable BrowseName="1:SensorTyp" DataType="String" NodeId="ns=1;i=2016" ParentNodeId="ns=1;i=2015">
+    <DisplayName>SensorTyp</DisplayName>
+    <Description>SensorTyp</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasProperty">ns=1;i=2015</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>Temperatur</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:IoPin" DataType="UInt16" NodeId="ns=1;i=2017" ParentNodeId="ns=1;i=2015">
+    <DisplayName>IoPin</DisplayName>
+    <Description>IoPin</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasProperty">ns=1;i=2015</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+    <Value>
+      <uax:UInt16>0</uax:UInt16>
+    </Value>
+  </UAVariable>
+  <UAObject BrowseName="1:Temperatur" NodeId="ns=1;i=2018" ParentNodeId="ns=1;i=2014">
+    <DisplayName>Temperatur</DisplayName>
+    <Description>The base type for all object nodes.</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=2014</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=2019</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=2020</Reference>
+    </References>
+  </UAObject>
+  <UAVariable BrowseName="1:Messwert" DataType="Float" NodeId="ns=1;i=2019" ParentNodeId="ns=1;i=2018">
+    <DisplayName>Messwert</DisplayName>
+    <Description>Messwert</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=2018</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Float>0.0</uax:Float>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:Einheit" DataType="String" NodeId="ns=1;i=2020" ParentNodeId="ns=1;i=2018">
+    <DisplayName>Einheit</DisplayName>
+    <Description>Einheit</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasProperty">ns=1;i=2018</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>Kelvin</uax:String>
+    </Value>
+  </UAVariable>
+  <UAObject BrowseName="1:Stammdaten" NodeId="ns=1;i=2021" ParentNodeId="ns=1;i=2014">
+    <DisplayName>Stammdaten</DisplayName>
+    <Description>Stammdaten</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=2014</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="Organizes">ns=1;i=2022</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=2025</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=2026</Reference>
+    </References>
+  </UAObject>
+  <UAObject BrowseName="1:Standort" NodeId="ns=1;i=2022" ParentNodeId="ns=1;i=2021">
+    <DisplayName>Standort</DisplayName>
+    <Description>Standort</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="Organizes">ns=1;i=2021</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=2023</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=2024</Reference>
+    </References>
+  </UAObject>
+  <UAVariable BrowseName="1:Laengengrad" DataType="Double" NodeId="ns=1;i=2023" ParentNodeId="ns=1;i=2022">
+    <DisplayName>Laengengrad</DisplayName>
+    <Description>Laengengrad</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=2022</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Double>9.107</uax:Double>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:Breitengrad" DataType="Double" NodeId="ns=1;i=2024" ParentNodeId="ns=1;i=2022">
+    <DisplayName>Breitengrad</DisplayName>
+    <Description>Breitengrad</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasComponent">ns=1;i=2022</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Double>48.7451</uax:Double>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:Hersteller" DataType="String" NodeId="ns=1;i=2025" ParentNodeId="ns=1;i=2021">
+    <DisplayName>Hersteller</DisplayName>
+    <Description>Hersteller</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasProperty">ns=1;i=2021</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>Manufacturer ZYX</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:Seriennummer" DataType="String" NodeId="ns=1;i=2026" ParentNodeId="ns=1;i=2021">
+    <DisplayName>Seriennummer</DisplayName>
+    <Description>Seriennummer</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasProperty">ns=1;i=2021</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>HW75SQx9</uax:String>
+    </Value>
+  </UAVariable>
+  <UAObjectType BrowseName="1:MachineType" NodeId="ns=1;i=2027">
+    <DisplayName>MachineType</DisplayName>
+    <Description>MachineType</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasSubtype">i=58</Reference>
+    </References>
+  </UAObjectType>
+  <UAObject BrowseName="1:Machine" NodeId="ns=1;i=2028" ParentNodeId="i=85">
+    <DisplayName>Machine</DisplayName>
+    <Description>MachineType</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="Organizes">i=85</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=2027</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=2029</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=2030</Reference>
+    </References>
+  </UAObject>
+  <UAVariable BrowseName="1:Manufacturer" DataType="String" NodeId="ns=1;i=2029" ParentNodeId="ns=1;i=2028">
+    <DisplayName>Manufacturer</DisplayName>
+    <Description>Manufacturer</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasProperty">ns=1;i=2028</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>Special Manufacturer</uax:String>
+    </Value>
+  </UAVariable>
+  <UAVariable BrowseName="1:Seriennummer" DataType="String" NodeId="ns=1;i=2030" ParentNodeId="ns=1;i=2028">
+    <DisplayName>Seriennummer</DisplayName>
+    <Description>Seriennummer</Description>
+    <References>
+      <Reference IsForward="false" ReferenceType="HasProperty">ns=1;i=2028</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+    </References>
+    <Value>
+      <uax:String>456156188561</uax:String>
+    </Value>
+  </UAVariable>
+</UANodeSet>
